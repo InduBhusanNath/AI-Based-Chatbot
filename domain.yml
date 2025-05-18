@@ -8,6 +8,8 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_name
+  - book_appointment
 
 responses:
   utter_greet:
@@ -29,6 +31,12 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_ask_name:
+   - text: "I'm a chatbot. Your helpful assistant."
+
+  utter_book_appointment:
+   - text: "Sure! When would you like to schedule your appointment?"
+  
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

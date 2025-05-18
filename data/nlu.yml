@@ -89,3 +89,23 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: ask_name
+  examples: |
+    - what's your name?
+    - who are you?
+    - may I know your name?
+    - tell me your name
+    - identify yourself
+    - are you a bot?
+    - tell me who are you
+
+-  intent: book_appointment
+   examples: |
+     - I want to book an appointment
+     - Can I schedule a meeting tomorrow?
+     - Book a slot with doctor on Friday
+     - Can you arrange a consultation with me?
+
+
+   

@@ -28,3 +28,13 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+ 
+-  story: tell name path
+   steps:
+   - intent: ask_name
+   - action: utter_ask_name
+   
+-  story: book appointment path
+   steps:
+   - intent: book_appointment
+   - action: utter_book_appointment

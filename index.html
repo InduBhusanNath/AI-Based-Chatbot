@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rasa Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+    }
+    #chatbox {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 400px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+    .user { color: blue; }
+    .bot { color: green; }
+  </style>
+</head>
+<body>
+
+  <h2>Chat with Rasa Bot</h2>
+  <div id="chatbox"></div>
+
+  <input type="text" id="userInput" placeholder="Type your message..." style="width: 80%;">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    async function sendMessage() {
+      const userInput = document.getElementById("userInput");
+      const message = userInput.value;
+      userInput.value = "";
+
+      if (!message) return;
+
+      const chatbox = document.getElementById("chatbox");
+      chatbox.innerHTML += `<div class="user"><strong>You:</strong> ${message}</div>`;
+
+      const response = await fetch("http://0.0.0.0:5005/webhooks/rest/webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+      });
+
+      const data = await response.json();
+      data.forEach(res => {
+        chatbox.innerHTML += `<div class="bot"><strong>Bot:</strong> ${res.text}</div>`;
+      });
+
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
